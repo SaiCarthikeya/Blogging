@@ -1,14 +1,24 @@
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import PostPage from './pages/PostPage';
+import Header from './components/Header';
+import CreateEditPage from './pages/CreateEditPage';
 
-function App() {
-  return (
-    <div>
-      <p className='text-green-500 text-8xl'>test</p>
-      <h1 className="text-3xl text-red-900 bg-slate-600 font-bold underline">
-      Hello world!
-    </h1>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <Router>
+            <Header />
+            <div className="App">
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/posts/:id" element={<PostPage />} />
+                    <Route path="/create" element={<CreateEditPage />} />
+                    <Route path="/edit/:id" element={<CreateEditPage />} />
+                </Routes>
+            </div>
+        </Router>
+    );
+};
 
 export default App;
